@@ -1,0 +1,29 @@
+<div class="page-header navbar navbar-fixed-top">
+	<div class="page-header-inner">
+		<div class="page-logo">
+			<a href="/administrator">
+			<img src="/admin/assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/>
+			</a>
+			<div class="menu-toggler sidebar-toggler">
+			</div>
+		</div>
+
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+		</a>
+
+			<div class="page-top">
+		
+			<!-- END HEADER SEARCH BOX -->
+			<!-- BEGIN TOP NAVIGATION MENU -->
+			<div class="top-menu" style="margin: 25px 20px 0 0; ">
+			<% if user_signed_in? %>
+				<%= current_user.email %> |
+				<%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+			<% end %>				
+				
+			</div>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<style type="text/css">
+	.category_grid .product_item{
+		float: left;
+	}
+</style>
+
+<%= render '/product_categories/blocks/breadcums' %>
+<div class="page_content_offset">		
+				<div class="container">
+					<div class="row clearfix">
+						<!--left content column-->
+						<section class="col-lg-9 col-md-9 col-sm-9">
+							<h2 class="tt_uppercase color_dark m_bottom_25">Все категории</h2>
+							<hr class="m_bottom_10 divider_type_3">
+							<!--products-->
+							<section class="products_container category_grid clearfix m_bottom_15">
+
+							<% @product_categories.each do |product_category| %>
+							  <% if product_category.product_categories.count > 0 %>
+								<!--product item-->
+								<div class="product_item hit w_xs_full">
+									<figure class="r_corners photoframe type_2 t_align_c tr_all_hover shadow relative">
+										<!--product preview-->
+										<a href="#" class="d_block relative wrapper pp_wrap m_bottom_15">
+											<img src="<%= product_category.avatar.url(:medium) %>" class="tr_all_hover" alt="">
+										</a>
+										<!--description and price of product-->
+										<figcaption>
+											<h5 class="m_bottom_10">
+											<%= link_to product_category.name, product_category_path(product_category), class: 'color_dark' %>
+											</h5>
+										</figcaption>
+									</figure>
+								</div>
+								<% end %>
+							<% end %>	
+
+							</section>
+							<hr class="m_bottom_10 divider_type_3">
+						</section>
+						<!--right column-->
+						<%= render '/product_categories/blocks/sidebar/sidebar' %>
+					</div>
+				</div>
+</div>

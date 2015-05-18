@@ -1,0 +1,35 @@
+<% provide(:title, @post.meta_title) %>
+<% provide(:description, @post.meta_description) %>
+<% provide(:keywords, @post.meta_keywords) %>
+ 
+
+    <section class="breadcrumbs">
+        <div class="container">
+          <ul class="horizontal_list clearfix bc_list f_size_medium">
+          </ul>
+        </div>
+      </section>
+      <!--content-->
+      <div class="page_content_offset">
+        <div class="container">
+          <div class="row clearfix">
+            <!--left content column-->
+            <section class="col-lg-9 col-md-9 col-sm-9">
+              <!--blog post-->
+              <article class="m_bottom_15">
+                <div class="row clearfix m_bottom_15">
+                  <div class="col-lg-9 col-md-9 col-sm-8">
+                    <h2 class="m_bottom_5 color_dark fw_medium m_xs_bottom_10"><%= @post.title %></h2>
+                   
+                  </div>
+                  
+                </div>
+                
+                 <%= @post.text.html_safe %>
+              </article>
+              
+            </section>
+            <%= render('post_categories/blocks/sidebar') %>
+          </div>
+        </div>
+      </div>

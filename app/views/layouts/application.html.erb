@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+	<head>
+
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags%>
+
+		<title><%= yield(:title) %></title>
+		<meta name="keywords" content="<%= yield(:description) %>">
+		<meta name="description" content="<%= yield(:keywords) %>">
+
+		<link rel="stylesheet" type="text/css" media="all" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/settings.css">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/owl.transitions.css">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.custom-scrollbar.css">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/style.css">
+		<!--font include-->
+		<link href="/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<!--boxed layout-->
+		<div class="wide_layout relative w_xs_auto">
+			<%= render '/layouts/header/main' %>
+			<%= yield %>
+			<%= render '/layouts/footer/main' %>
+		</div>
+	
+		<!--scripts include-->
+		<script src="/js/jquery-2.1.0.min.js"></script>
+		<script src="/js/retina.js"></script>
+		<script src="/js/jquery.themepunch.plugins.min.js"></script>
+		<script src="/js/jquery.themepunch.revolution.min.js"></script>
+		<script src="/js/jackbox-packed.min.js"></script>
+		<script src="/js/waypoints.min.js"></script>
+		<script src="/js/owl.carousel.min.js"></script>
+		<script src="/js/jquery.tweet.min.js"></script>
+		<script src="/js/jquery.custom-scrollbar.js"></script>
+		<script src="/js/scripts.js"></script>
+
+
+ <%= strip_tags @metrica.where(name: "Код яндекс метрики").first.value %>
+ <br/>
+ <%= strip_tags @metrica.where(name: "Код гугл аналитики").first.value %>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box grey-cascade">
+						<div class="portlet-title">
+							<div class="caption">
+								<%= @slider.title %>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="btn-group">
+												<a href="/administrator/slides/new" id="sample_editable_1_new" class="btn green">Новый слайд</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+							<thead>
+							<tr>
+								<th>
+									 Номер
+								</th>
+								<th>
+									 Название
+								</th>
+								<th>
+									 
+								</th>
+								
+							</tr>
+							</thead>
+							<tbody>
+							
+						<% @slider.slides.each do |slide| %>
+							<tr>
+								<td>
+									 <%= slide.id %>
+								</td>
+								<td>
+									 <%= link_to slide.title, edit_administrator_slide_path(slide) %>
+								</td>
+								<td>
+									<%= link_to 'Удалить', administrator_slide_path(slide), method: :delete, data: { confirm: 'Удалить слайд ?' } %>
+								</td>
+							</tr>
+
+						<% end %>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</div>

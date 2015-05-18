@@ -1,0 +1,47 @@
+commit 939c6ea0ce48d730ae09bfbe7776d9eff38fb411
+Author: dima-antonenko <d.antonenko94@mail.ru>
+Date:   Tue Mar 10 04:32:55 2015 +0300
+
+    add price to product
+
+diff --git a/db/migrate/20150310012653_add_price_to_product.rb b/db/migrate/20150310012653_add_price_to_product.rb
+new file mode 100644
+index 0000000..60d8286
+--- /dev/null
++++ b/db/migrate/20150310012653_add_price_to_product.rb
+@@ -0,0 +1,6 @@
++class AddPriceToProduct < ActiveRecord::Migration
++  def change
++  	add_column :products, :price, :decimal
++  	add_index :products, :price
++  end
++end
+diff --git a/db/schema.rb b/db/schema.rb
+index 475a9a7..f51c6ce 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -11,7 +11,7 @@
+ #
+ # It's strongly recommended that you check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(version: 20150310003727) do
++ActiveRecord::Schema.define(version: 20150310012653) do
+ 
+   create_table "post_categories", force: :cascade do |t|
+     t.string   "title"
+@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150310003727) do
+     t.string   "meta_keywords"
+     t.datetime "created_at",          null: false
+     t.datetime "updated_at",          null: false
++    t.decimal  "price"
+   end
+ 
+   add_index "products", ["image"], name: "index_products_on_image"
+@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150310003727) do
+   add_index "products", ["meta_keywords"], name: "index_products_on_meta_keywords"
+   add_index "products", ["meta_title"], name: "index_products_on_meta_title"
+   add_index "products", ["name"], name: "index_products_on_name"
++  add_index "products", ["price"], name: "index_products_on_price"
+ 
+   create_table "site_variables", force: :cascade do |t|
+     t.string   "name"

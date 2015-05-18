@@ -1,0 +1,93 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+	.nav-tabs{
+		margin-bottom: 35px;
+	}
+</style>
+
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-12">
+					<%= form_for([:administrator, @menu_item], :multipart => true ) do |f| %>
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject font-green-sharp bold uppercase">
+									<%= @menu_item.title %> </span>
+								</div>
+								<div class="actions btn-set">
+									<a href="/administrator/products" class="btn btn-default btn-circle"> Назад </a>
+									 <%= f.submit(class: "btn green-haze btn-circle", value: "Обновить") %>
+									<!-- <button class="btn green-haze btn-circle">Сохранить</button>
+									-->
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="tabbable">
+									<ul class="nav nav-tabs">
+										<li class="active">
+											<a href="#tab_general" data-toggle="tab">
+											Основное </a>
+										</li>
+										
+									</ul>
+									<div class="tab-content no-space">
+										<div class="tab-pane active" id="tab_general">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Название: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :title, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Ссылка: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :link, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Позиция: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :position, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Меню: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.select :menu_id , Menu.all.collect {|menu| [menu.title, menu.id ]}, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Родительский пункт: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.select :menu_item_id , MenuItem.all.collect {|menu_item| [menu_item.title, menu_item.id ]}, class: "form-control" %>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+
+</div>
+

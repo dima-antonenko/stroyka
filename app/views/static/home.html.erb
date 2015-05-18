@@ -1,0 +1,16 @@
+<% provide(:title, strip_tags(@text_home.where(name: "Title").first.value) ) %>
+<% provide(:description, @text_home.where(name: "Description").first.value) %>
+<% provide(:keywords, @text_home.where(name: "Keywords").first.value) %>
+
+			<!--slider-->
+		<%= render 'static/home/slider' %>
+			<!--content-->
+			<div class="page_content_offset">
+				<div class="container">
+					<!--banners-->
+					<%= render 'static/home/banners' %>
+					<!--filter navigation-->
+					<%= render 'static/home/new_products' %>
+					<%= render 'static/home/text' %>
+				</div>
+			</div>

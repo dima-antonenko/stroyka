@@ -1,0 +1,129 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+</style>
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-12">
+					<%= form_for([:administrator, @product_category], :multipart => true ) do |f| %>
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="icon-basket font-green-sharp"></i>
+									<span class="caption-subject font-green-sharp bold uppercase">
+									Новая категория товаров </span>
+									
+								</div>
+								<div class="actions btn-set">
+									<a href="/administrator/product_categories" class="btn btn-default btn-circle"> Назад </a>
+									 <%= f.submit(class: "btn green-haze btn-circle", value: "Сохранить") %>
+									<!-- <button class="btn green-haze btn-circle">Сохранить</button>
+									-->
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="tabbable">
+									<ul class="nav nav-tabs">
+										<li class="active">
+											<a href="#tab_general" data-toggle="tab">
+											Основное </a>
+										</li>
+										<li>
+											<a href="#tab_description" data-toggle="tab">
+											Описание </a>
+										</li>
+										<li>
+											<a href="#tab_images" data-toggle="tab">
+											Изображения </a>
+										</li>
+										<li>
+											<a href="#tab_seo" data-toggle="tab">
+											SEO
+											</a>
+										</li>
+									</ul>
+									<div class="tab-content no-space">
+										<div class="tab-pane active" id="tab_general">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Название: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :name, class: "form-control" %>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-md-2 control-label">Родительская категория: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.select :product_category_id , ProductCategory.all.collect {|category| [category.name, category.id ]}, class: "form-control" %>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div class="tab-pane" id="tab_description">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Описание: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.cktext_area :description, class: "form-control edit" %>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane" id="tab_images">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Изображение: </span>
+													</label>
+													<div class="col-md-10">
+														<%= f.file_field :avatar %>
+													</div>
+													<%= image_tag @product_category.avatar.url(:medium) %>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane" id="tab_seo">
+											<div class="form-group">
+													<label class="col-md-2 control-label">Title: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_title, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Description: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_description, class: "form-control" %>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Keywords: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :meta_keywords, class: "form-control" %>
+													</div>
+												</div>
+												</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+
+</div>
+

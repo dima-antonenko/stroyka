@@ -1,0 +1,58 @@
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box grey-cascade">
+						<div class="portlet-title">
+							<div class="caption">
+								Баннеры
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="row">
+									<div class="col-md-6">
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+							<thead>
+							<tr>
+								<th>
+									 Название
+								</th>
+								<th>
+									 Ссылка
+								</th>
+								
+							</tr>
+							</thead>
+							<tbody>
+							
+						<% @banners.each do |banner| %>
+							<tr>
+								<td>
+									 <%= link_to banner.title, edit_administrator_banner_path(banner) %> <!-- -->
+
+								</td>
+								<td>
+									<%= banner.link %>
+
+								</td>
+							</tr>
+
+						<% end %>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</div>

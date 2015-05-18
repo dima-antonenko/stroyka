@@ -1,0 +1,94 @@
+<style type="text/css">
+  .t_md_align_c img {
+    max-height: 150px;
+    max-width: 150px;
+  }
+  .table_head{
+    width: 20%;
+  }
+  .button_clear {
+    clear: none;
+    float: left;
+    margin-right: 20px;
+  }
+</style>
+<div class="page_content_offset">
+        <div class="container">
+          <div class="row clearfix">
+            <section class="col-lg-12 col-md-12 col-sm-12 m_xs_bottom_30">
+              <h2 class="tt_uppercase color_dark m_bottom_25">Корзина</h2>
+              <!--cart table-->
+              <table class="table_type_4 responsive_table full_width r_corners wraper shadow t_align_l t_xs_align_c m_bottom_30">
+                <thead>
+                  <tr class="f_size_large">
+                    <!--titles for td-->
+                    <th class="table_head">Название</th>
+                    <th class="table_head">Артикул</th>
+                    <th class="table_head">Цена</th>
+                    <th class="table_head">Количество</th>
+                    <th class="table_head">Стоимость</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                <% @cart.line_items.each do |item|  %>
+                  <tr>
+                    <!--Product name and image-->
+                    <td data-title="Product Image &amp; name" class="t_md_align_c">
+                      <img src="<%= item.product.image %>" alt="" class="m_md_bottom_5 d_xs_block d_xs_centered">
+                      <a href="#" class="d_inline_b m_left_5 color_dark"><%= item.product.name %></a>
+                    </td>
+                    <!--product key-->
+                    <td data-title="SKU"><%= item.product.code %></td>
+                    <!--product price-->
+                    <td data-title="Price">
+                      <p class="f_size_large color_dark"><%= item.product.price %></p>
+                    </td>
+                    <!--quanity-->
+                    <td data-title="Quantity">
+                      <div class="clearfix quantity r_corners d_inline_middle f_size_medium color_dark m_bottom_10">
+                        <%= item.quantity %>
+                      </div>
+
+                      <div>
+                      <%= link_to 'Удалить', line_item_path(item), method: :delete, data: { confirm: 'Удалить товар ?' }, class: "color_dark" %> 
+                      </div>
+                    </td>
+                    <!--subtotal-->
+                    <td data-title="Subtotal">
+                      <p class="f_size_large fw_medium scheme_color"> 
+                        <%= item.product.price * item.quantity %> р.
+                      </p>
+                    </td>
+                  </tr>
+
+                <% end %>
+                  
+                  <tr>
+                    <td colspan="4" class="v_align_m d_ib_offset_large t_xs_align_l">
+                      <!--coupon-->
+                      <form class="d_ib_offset_0 d_inline_middle half_column d_xs_block w_xs_full m_xs_bottom_5">
+                        
+                      </form>
+                      <p class="fw_medium f_size_large t_align_r scheme_color p_xs_hr_0 d_inline_middle half_column d_ib_offset_normal d_xs_block w_xs_full t_xs_align_c">Всего:</p>
+                    </td>
+                    <td colspan="1" class="v_align_m">
+                      <p class="fw_medium f_size_large scheme_color m_xs_bottom_10"><%= @cart.total_price %> р.</p>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+             
+
+                <tr>
+                  <td colspan="2">
+                    <%= button_to 'Очистить корзину', @cart, method: :delete, class: "button_type_6 button_clear bg_scheme_color f_size_large r_corners tr_all_hover color_light m_bottom_20", data: { confirm: 'Удалить все товары из корзины ?' } %>
+                     <%= button_to 'Оформить заказ', new_order_path, method: :get, class: "button_type_6 bg_scheme_color f_size_large r_corners tr_all_hover color_light m_bottom_20"  %>
+                  </td>
+                </tr>
+              </table>
+            </section>
+          </div>
+        </div>
+</div>

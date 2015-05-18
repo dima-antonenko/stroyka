@@ -1,0 +1,152 @@
+<script>
+jQuery(document).ready(function() {    
+   Metronic.init(); // init metronic core componets
+   Layout.init(); // init layout
+   Demo.init(); // init demo features 
+    Index.init(); // init index page
+ Tasks.initDashboardWidget(); // init tash dashboard widget  
+});
+</script>
+	<div class="page-sidebar-wrapper">
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<li>
+					<a href="/administrator">
+					<i class="icon-home"></i>
+					<span class="title">Главная</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-bag"></i>
+					<span class="title">Товары</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/product_categories">
+							Категории товаров</a>
+						</li>
+						<li>
+							<a href="/administrator/products">
+							Товары</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-wallet"></i>
+					<span class="title">Продажи</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/orders">
+							<!-- <span class="badge badge-warning">1</span> -->
+							Заказы</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-doc"></i>
+					<span class="title">Материалы</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/post_categories">
+							Категории материалов</a>
+						</li>
+						<li>
+							<a href="/administrator/posts">
+							Материалы</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-list"></i>
+					<span class="title">Страницы</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/page_home">
+							Главная</a>
+						</li>
+						<!-- 
+						<li>
+							<a href="/administrator/page_delivery_pay">
+							Доставка и оплата</a>
+						</li>
+						<li>
+							<a href="/administrator/page_company_info">
+							О компании</a>
+						</li>
+						<li>
+							<a href="/administrator/page_contact">
+							Контакты</a>
+						</li>
+						-->
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-size-actual"></i>
+					<span class="title">Блоки</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/blocks_in_header">
+							Шапка</a>
+						</li>
+						<li>
+							<a href="/administrator/blocks_in_footer">
+							Подвал</a>
+						</li>
+						<li>
+							<a href="/administrator/menus">
+							Меню</a>
+						</li>
+						<li>
+							<a href="/administrator/sliders">
+							Слайдеры</a>
+						</li>
+						<li>
+							<a href="/administrator/banners">
+							Баннеры</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-wrench"></i>
+					<span class="title">Настроки</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/administrator/settings">
+							Общие</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+			</ul>
+			
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>

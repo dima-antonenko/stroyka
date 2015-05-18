@@ -1,0 +1,25 @@
+<% provide(:title, @post_category.meta_title) %>
+<% provide(:description, @post_category.meta_description) %>
+<% provide(:keywords, @post_category.meta_keywords) %>
+
+<%# render('post_categories/blocks/sidebar') %>
+
+
+			<section class="breadcrumbs">
+				<div class="container">
+					<ul class="horizontal_list clearfix bc_list f_size_medium">
+						
+					</ul>
+				</div>
+			</section>
+			<!--content-->
+			<div class="page_content_offset">
+				<div class="container">
+					<div class="row clearfix">
+						<!--left content column-->
+				<%= render('post_categories/blocks/articles_list') %>
+						<!--right column-->
+				<%= render('post_categories/blocks/sidebar') %>		
+					</div>
+				</div>
+			</div>

@@ -1,0 +1,161 @@
+      <% provide(:title,     @product.meta_title) %>
+      <% provide(:description, @product.meta_description) %>
+      <% provide(:keywords,    @product.meta_keywords) %>
+
+<style type="text/css">
+  .button_cart{
+
+  }
+  .cart_area{
+    margin-top: 30px;
+  }
+  .cart_area .button_to{
+    margin-left: 15px;
+    margin-top: -7px;
+  }
+  #zoom_image{
+    height: 408px;
+    width: 408px;
+  }
+</style>      
+      <div class="page_content_offset">
+        <div class="container">
+          <div class="clearfix m_bottom_30 t_xs_align_c">
+            <div class="photoframe type_2 shadow r_corners f_left f_sm_none d_xs_inline_b product_single_preview relative m_right_30 m_bottom_5 m_sm_bottom_20 m_xs_right_0 w_mxs_full">
+              <div class="relative d_inline_b m_bottom_10 qv_preview d_xs_block">
+                <img id="zoom_image" src="<%= @product.image %>" data-zoom-image="<%= @product.image %>" class="tr_all_hover" alt="">
+                <a href="<%= @product.image %>" class="d_block button_type_5 r_corners tr_all_hover box_s_none color_light p_hr_0">
+                  <i class="fa fa-expand"></i>
+                </a>
+              </div>
+              <!--carousel-->
+            </div>
+            <div class="p_top_10 t_xs_align_l">
+              <!--description-->
+              <h2 class="color_dark fw_medium m_bottom_10"><%= @product.name %></h2>
+              <div class="m_bottom_10">
+              </div>
+              <hr class="m_bottom_10 divider_type_3">
+              <table class="description_table m_bottom_10">
+                <tr>
+                  <td>Коллекция:</td>
+                  <td><%= @product.collection.name %></td>
+                </tr>
+                <tr>
+                  <td>Артикул:</td>
+                  <td><%= @product.code %></td>
+                </tr>
+                <tr>
+                  <td>Для ванной:</td>
+                    <% if @product.to_bathroom %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td>Для кухни:</td>
+                    <% if @product.to_kitchen %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td>Для корридора:</td>
+                    <% if @product.to_corridor %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td>Для жилых помещений:</td>
+                    <% if @product.to_living %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td>Для фасада:</td>
+                    <% if @product.to_fasad %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td>Для пола:</td>
+                    <% if @product.to_floor %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+
+                <tr>
+                  <td>Для общественных помещений:</td>
+                    <% if @product.to_public %>
+                      <td>подходит</td>
+                    <% else %>
+                    <td> не подходит</td>
+                    <% end %>
+                </tr>
+
+                  <tr>
+                  <td>Строительная плитка:</td>
+                    <% if @product.to_construction %>
+                      <td>да</td>
+                    <% else %>
+                    <td> нет</td>
+                    <% end %>
+                </tr>
+
+                  
+
+              </table>
+              <hr class="divider_type_3 m_bottom_10">
+              <table class="description_table m_bottom_10 cart_area">
+                <tr>
+                  <td><span class="v_align_b f_size_big m_left_5 scheme_color fw_medium"><%= @product.price.to_s[0..2] %>руб / <%= @product.edizm %></span></td>
+                  <td><%= button_to 'Купить', line_items_path(product_id: @product.id), class: 'button_cart button_type_3 color_light bg_scheme_color d_block r_corners tr_delay_hover box_s_none'
+                         %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!--tabs-->
+          <div class="tabs m_bottom_45">
+            <!--tabs navigation-->
+            <nav>
+              <ul class="tabs_nav horizontal_list clearfix">
+                <li class="f_xs_none"><a href="#tab-1" class="bg_light_color_1 color_dark tr_delay_hover r_corners d_block">Характеристики</a></li>
+              </ul>
+            </nav>
+            <section class="tabs_content shadow r_corners">
+              <div id="tab-1">
+                <p>Название: <%= @product.name %></p>
+                <p>Артикул:  <%= @product.code %></p>
+                <p>Место в коллекции: <%= @product.place_in_the_collection %></p>
+                <p>Минимальная партия: <%= @product.minpart %></p>
+                <p>cratnost: <%= @product.cratnost %></p>
+                <p>Вес: <%= @product.weight %></p>
+                <p>Размер: <%= @product.size %></p>
+                <p>Назначение: <%= @product.architectural_surface %></p>
+                <p>base_value: <%= @product.base_value %></p>
+                <p>Цвет: <%= @product.cover_value %></p>
+                <p>Вид поверхности: <%= @product.surface_alue %></p>
+                <p>Наличие: <%= @product.ballance %></p>
+                <p>В наличии: <%= @product.ballance_count %></p>
+                <p>Категория: <%= @product.category %></p>
+                <p>Дизайн, стилистика: <%= @product.design_value %></p>
+                <p>Морозостойкость: <%= @product.frost_hardiness %></p>
+                <p>ректифицированная: <%= @product.rectified %></p>
+              </div>
+              
+            </section>
+          </div>
+          
+        </div>
+      </div>

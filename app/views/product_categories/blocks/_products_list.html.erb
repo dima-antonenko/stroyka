@@ -1,0 +1,41 @@
+   <div class="product-grid">
+<% @i = -1 %>
+<% @product_category.products.each do |product| %>
+
+<% if @i == 2   %>
+
+<div class="box-product last-item row-first">
+        
+         <a href="<%= product_category_product_path(@product_category, product) %>"> <%= image_tag product.avatar.url(:thumb) %> </a>
+            <div class="list_grid_right">
+              <h3 class="name"><%= link_to product.name, product_category_product_path(@product_category, product) %></h3>
+              <p class="wrap_price"> <span class="price"><%= number_to_currency(product.price, unit: "р.",delimiter: " ' ",  format: "%n %u", precision: 0) %></span></p>
+              <p class="submit">
+                <!-- <input type="button" value="Add to Cart" class="button"> -->
+                <%= button_to 'Купить', line_items_path(product_id: product),{ class: "button" }%>
+              </p>
+            </div>
+</div>
+<% @i = 0 %>
+<% else %>
+
+<div class="box-product ">
+          <a href="<%= product_category_product_path(@product_category, product) %>">
+          <%= image_tag product.avatar.url(:thumb) %>
+          </a>
+            <div class="list_grid_right">
+              <h3 class="name"><%= link_to product.name, product_category_product_path(@product_category, product) %></h3>
+              <p class="wrap_price"> <span class="price"><%= number_to_currency(product.price, unit: "р.",delimiter: " ' ",  format: "%n %u", precision: 0) %></span></p>
+              <p class="submit">
+                <!-- <input type="button" value="Add to Cart" class="button"> -->
+                <%= button_to 'Купить', line_items_path(product_id: product),{ class: "button" }%>
+              </p>
+            </div>
+</div>
+
+<% @i = @i + 1 %>
+<% end %>
+
+      <% end %>      
+</div>
+</div>

@@ -1,0 +1,3 @@
+class SiteVariablesController < ApplicationController
+
+end

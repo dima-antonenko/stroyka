@@ -1,0 +1,11 @@
+  <section class="revolution_slider">
+        <div class="r_slider">
+          <ul>
+          <% @slider.slides.each  do |slide| %>
+            <li class="f_left" data-transition="curtain-1" data-slotamount="7" >
+              <img src="<%= slide.avatar.url(:medium) %>" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" data-bgposition="center center">
+            </li>
+          <%  end  %>
+          </ul>
+        </div>
+      </section>

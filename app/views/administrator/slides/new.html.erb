@@ -1,0 +1,92 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+	.nav-tabs{
+		margin-bottom: 35px;
+	}
+</style>
+
+
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-12">
+					<%= form_for([:administrator, @slide], :multipart => true ) do |f| %>
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="icon-basket font-green-sharp"></i>
+									<span class="caption-subject font-green-sharp bold uppercase">
+									Новый слайд </span>
+								</div>
+								<div class="actions btn-set">
+									<a href="/administrator/products" class="btn btn-default btn-circle"> Назад </a>
+									 <%= f.submit(class: "btn green-haze btn-circle", value: "Создать") %>
+									<!-- <button class="btn green-haze btn-circle">Сохранить</button>
+									-->
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="tabbable">
+									<ul class="nav nav-tabs">
+										<li class="active">
+											<a href="#tab_general" data-toggle="tab">
+											Основное </a>
+										</li>
+										
+									</ul>
+									<div class="tab-content no-space">
+										<div class="tab-pane active" id="tab_general">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Название: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :title, class: "form-control" %>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="col-md-2 control-label">Слайдер: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.select :slider_id , Slider.all.collect {|slider| [slider.title, slider.id ]}, class: "form-control" %>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-md-2 control-label">Текст: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :content, class: "form-control" %>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-md-2 control-label">Изображение: </span>
+													</label>
+													<div class="col-md-10">
+														<%= f.file_field :avatar %>
+													</div>
+													<%= image_tag @slide.avatar.url(:medium) %>
+												</div>
+										
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+
+</div>
+

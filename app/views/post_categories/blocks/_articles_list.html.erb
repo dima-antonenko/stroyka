@@ -1,0 +1,19 @@
+ <section class="col-lg-9 col-md-9 col-sm-9">
+                            <h2 class="tt_uppercase color_dark m_bottom_25"><%= @post_category.title %></h2>
+                            <% @post_category.posts.each do |post| %>
+                            <article class="m_bottom_20 clearfix">
+                                <a href="#" class="photoframe d_block d_xs_inline_b f_xs_none wrapper shadow f_left m_right_20 m_bottom_10 r_corners">
+                                    
+                                    <%= image_tag post.avatar.url(:medium), class: "tr_all_long_hover" %>
+                                </a>
+                                <div class="mini_post_content">
+                                    <h4 class="m_bottom_5"><a href="#" class="color_dark fw_medium"><%= link_to post.title, post_category_post_path(@post_category, post) %></a></h4>
+                                   
+                                    <hr class="m_bottom_15">
+                                     <p class="m_bottom_10"><%= post.lead.html_safe %> </p>
+                                     <%= link_to "далее ...", post_category_post_path(@post_category, post), class: "tt_uppercase f_size_large" %>
+                                </div>
+                            </article>
+                            <hr class="divider_type_3 m_bottom_30">
+                            <% end %>
+                        </section>

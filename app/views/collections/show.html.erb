@@ -1,0 +1,131 @@
+<style type="text/css">
+	.category_grid .product_item{
+		float: left;
+	}
+	.collection_params{
+		float: right;
+		width: 65%;
+		height: 300px;
+	}
+	.collection_image{
+		float: left;
+		width: 35%;
+		height: 300px;
+	}
+	.collection_top_row{
+		clear: both;
+	}
+	.collection_params table{
+		text-align: left;
+		line-height: 30px;
+	}
+</style>	
+<%= render '/product_categories/blocks/breadcums' %>
+<div class="page_content_offset">			
+				<div class="container">
+					<div class="row clearfix">
+						<!--left content column-->
+						<section class="col-lg-9 col-md-9 col-sm-9">
+							<h2 class="tt_uppercase color_dark m_bottom_25"><%= @collection.name %></h2>
+							<div class="r_corners m_bottom_40">
+								<div class="collection_image">
+									
+											<img src="<%= @collection.interior_list %>" class="tr_all_hover" alt="">
+										
+								</div>
+								<div class="collection_params">
+									<table >
+
+                
+					                <tr>
+					                  <td>Для ванной:</td>
+					                    <% if @collection.to_bathroom %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+					                <tr>
+					                  <td>Для кухни:</td>
+					                    <% if @collection.to_kitchen %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+					                <tr>
+					                  <td>Для корридора:</td>
+					                    <% if @collection.to_corridor %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+					                <tr>
+					                  <td>Для жилых помещений:</td>
+					                    <% if @collection.to_living %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+					                <tr>
+					                  <td>Для фасада:</td>
+					                    <% if @collection.to_fasad %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+					                <tr>
+					                  <td>Для пола:</td>
+					                    <% if @collection.to_floor %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+
+					                <tr>
+					                  <td>Для общественных помещений:</td>
+					                    <% if @collection.to_public %>
+					                      <td>подходит</td>
+					                    <% else %>
+					                    <td> не подходит</td>
+					                    <% end %>
+					                </tr>
+
+					                  <tr>
+					                  <td>Строительная плитка:</td>
+					                    <% if @collection.to_construction %>
+					                      <td>да</td>
+					                    <% else %>
+					                    <td> нет</td>
+					                    <% end %>
+					                </tr>
+
+					                  
+
+					              </table>
+								</div>
+							</div>
+
+							<hr class="m_bottom_10 divider_type_3">
+							<!--products-->
+							<section class="products_container category_grid clearfix m_bottom_15">
+							<% if @collection.products.count > 0 %>
+								<%= render '/collections/blocks/products_list' %>
+							<% end %>
+
+							
+							</section>
+							<hr class="m_bottom_10 divider_type_3">
+							<%= will_paginate @collection.products.paginate(:page => params[:page], :per_page => 9) %>
+						</section>
+						<!--right column-->
+
+						<%= render '/product_categories/blocks/sidebar/sidebar' %>
+						
+					</div>
+				</div>
+				</div>

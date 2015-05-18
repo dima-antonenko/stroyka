@@ -1,0 +1,7 @@
+<div class="col-lg-4 col-md-4 col-sm-5 t_xs_align_c">
+								<ul class="d_inline_b horizontal_list clearfix f_size_small users_nav">
+								<% @top_menu.menu_items.each do |item| %>
+									<li><a href="<%=  item.link %>" class="default_t_color" data-popup="#login_popup"><%=  item.title %></a></li>
+								<% end %>
+								</ul>
+</div>

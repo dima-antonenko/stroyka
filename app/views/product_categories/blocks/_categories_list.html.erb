@@ -1,0 +1,17 @@
+<% @product_category.product_categories.each do |product_category| %>
+								<!--product item-->
+								<div class="product_item hit w_xs_full">
+									<figure class="r_corners photoframe type_2 t_align_c tr_all_hover shadow relative">
+										<!--product preview-->
+										<a href="#" class="d_block relative wrapper pp_wrap m_bottom_15">
+											<img src="<%= product_category.avatar.url %>" class="tr_all_hover" alt="">
+										</a>
+										<!--description and price of product-->
+										<figcaption>
+											<h5 class="m_bottom_10">
+											<%= link_to product_category.name, product_category_path(product_category), class: 'color_dark' %>
+											</h5>
+										</figcaption>
+									</figure>
+								</div>
+							<% end %>	

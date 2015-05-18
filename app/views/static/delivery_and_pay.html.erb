@@ -1,0 +1,12 @@
+<% provide(:title, @text_delivery_and_pay.where(name: "Title").first.value) %>
+<% provide(:description, @text_delivery_and_pay.where(name: "Description").first.value) %>
+<% provide(:keywords, @text_delivery_and_pay.where(name: "Keywords").first.value) %>
+
+<div id="content">
+    <h1><span class="h1-top">Доставка и оплата</span></h1>
+    <div class="information_content">
+      <div>
+        <%= @text_delivery_and_pay.where(name:"Доставка и оплата текст").first.value.html_safe %>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<% @product_category.collections.paginate(:page => params[:page], :per_page => 9).each do |collection| %>
+								<!--product item-->
+								<div class="product_item hit w_xs_full">
+									<figure class="r_corners photoframe type_2 t_align_c tr_all_hover shadow relative">
+										<!--product preview-->
+										<a href="#" class="d_block relative wrapper pp_wrap m_bottom_15">
+											<img src="<%= collection.interior_list %>" class="tr_all_hover" alt="">
+										</a>
+										<!--description and price of product-->
+										<figcaption>
+											<h5 class="m_bottom_10">
+											<%= link_to collection.name, product_category_collection_path(@product_category,collection), class: 'color_dark' %>
+											</h5>
+										</figcaption>
+									</figure>
+								</div>
+							<% end %>	

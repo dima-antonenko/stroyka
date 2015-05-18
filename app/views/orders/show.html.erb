@@ -1,0 +1,64 @@
+<style type="text/css">
+  .mini_head{
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .mini_content{
+    font-size: 15px;
+  }
+  .price{
+    padding-right: 0px !important;
+    text-align: left !important;
+  }
+</style>
+<div id="content">
+  
+    <h1><span class="h1-top">Заказ № <%= @order.id %></span></h1>
+    <form action="shoppingcart.html" method="post" enctype="multipart/form-data">
+      <div class="cart-info">
+        <table>
+          <thead>
+            <tr>
+              <td class="image">Артикул</td>
+              <td class="name">Название</td>
+              <td class="price">Цена</td>
+              <td class="quantity">Количество</td>
+              <td class="total">Стоимость</td>
+            </tr>
+          </thead>
+          <tbody>
+          <% @order.line_items.each do |item| %>
+            <tr>
+              <td class="model"><%= item.product.sku %></td>
+              <td class="name"><%= item.product.name %>
+              </td>
+              <td class="price"><%= number_to_currency(item.product.price, unit: "р.",delimiter: " ' ",  format: "%n %u", precision: 0) %></td>
+              <td class="quantity"><%= item.quantity %></td>
+              <td class="total">
+                 <%= number_to_currency(item.product.price * item.quantity, unit: "р.",delimiter: " ' ",  format: "%n %u", precision: 0) %>
+            </tr>
+            <tr>
+              <td colspan="6" class="emptyrow"></td>
+            </tr>
+          <% end %>  
+          </tbody>
+        </table>
+
+      </div>
+
+    </form>
+    <tr>
+    <span class="right lastrow mini_head"><b>Всего:</b></span>  
+    <span class="right last lastrow mini_content"><%= number_to_currency(@order.total_price, unit: "р.",delimiter: " ' ",  format: "%n %u", precision: 0) %></span>
+    </tr>
+    <br/>
+    <tr>
+    <span class="right lastrow mini_head"><b>Номер заказа:</b></span>
+    <span class="right last lastrow mini_content"><%= @order.id %></span>
+    </tr> 
+     <br/>
+    <tr>
+    <span class="right lastrow mini_head"><b>Дата заказа:</b></span>
+    <span class="right last lastrow mini_content"><%= @order.created_at.to_s[0..-4] %> </span>
+    </tr>     
+  </div>

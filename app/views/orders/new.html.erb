@@ -1,0 +1,57 @@
+
+
+				<section class="h_top_part">
+					<div class="container">
+						<div class="row clearfix">
+							
+							<div class="bs_inner_offsets bg_light_color_3 shadow r_corners m_bottom_45">
+								<div class="row clearfix">
+									<div class="col-lg-6 col-md-6 col-sm-6 m_xs_bottom_30">
+									<h2 class="color_dark tt_uppercase m_bottom_25 m_top_25 ">Оформление заказа</h2>
+										<%= form_for(@order) do |f| %>
+										  <div class="button_submit">
+										    <%= f.label "Имя", class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :name, size: 40 %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.label "Номер телефона", class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :phone_number, size: 40 %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.label "Email", class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :email, size: 40 %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.label "Область", class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :region, size: 40 %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.label "Город",class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :sity, size: 40 %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.label "Адрес",class: "d_inline_b m_bottom_5"%><br>
+										    <%= f.text_field :address, size: 40 %>
+										  </div>
+										  
+										  <div class="button_submit">
+										    <%= f.label :pay_type, "Способ оплаты", class: "d_inline_b m_bottom_5" %><br>
+										    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Выберите способ оплаты', class: "select_title type_2 r_corners relative color_dark mw_0" %>
+										  </div>
+										  <div class="button_submit">
+										    <%= f.submit('Оформить заказ', class: "button_type_6 button_clear bg_scheme_color f_size_large r_corners tr_all_hover color_light m_bottom_20")  %>
+										  </div>
+										<% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+
+
+							

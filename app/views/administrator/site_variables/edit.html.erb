@@ -1,0 +1,65 @@
+<style type="text/css">
+	.tab-content .form-group{
+		padding-bottom: 50px;
+	}
+</style>
+
+<div class="page-content-wrapper">
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-12">
+					<%= form_for([:administrator, @site_variable], :multipart => true ) do |f| %>
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="icon-basket font-green-sharp"></i>
+									<span class="caption-subject font-green-sharp bold uppercase">
+									 <%= @site_variable.name %></span>
+									
+								</div>
+								<div class="actions btn-set">
+									<a href="/administrator/site_variables" class="btn btn-default btn-circle"> Назад </a>
+									 <%= f.submit(class: "btn green-haze btn-circle", value: "Обновить") %>
+									<!-- <button class="btn green-haze btn-circle">Сохранить</button>
+									-->
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="tabbable">
+									<div class="tab-content no-space">
+										<div class="tab-pane active" id="tab_general">
+											<div class="form-body">
+												<div class="form-group">
+													<label class="col-md-2 control-label">Название: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_field :name, class: "form-control" %>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-md-2 control-label">Значение: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= f.text_area :value, class: "form-control edit" %>
+													</div>
+												</div>
+
+												
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+
+</div>
+

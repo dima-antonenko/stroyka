@@ -1,0 +1,25 @@
+<%=  process_action.import_controller %>
+<% @collections_in_base.each do |collection| %>
+	<% if collection.products.count > 0 %>
+		<%= collection.name %> -- <%= collection.basic_category %><br/>
+		<%= collection.to_bathroom %><br/>
+		<%= collection.to_kitchen %> <br/>
+		<%= collection.to_corridor %> <br/>
+		<%= collection.to_living %> <br/>
+		<%= collection.to_fasad %> <br/>
+		<%= collection.to_floor %> <br/>
+		<%= collection.to_construction %> <br/>
+		<%= collection.to_public %> <br/><br/><br/>
+
+		<%= collection.products.first.to_bathroom %><br/>
+		<%= collection.products.first.to_kitchen %> <br/>
+		<%= collection.products.first.to_corridor %> <br/>
+		<%= collection.products.first.to_living %> <br/>
+		<%= collection.products.first.to_fasad %> <br/>
+		<%= collection.products.first.to_floor %> <br/>
+		<%= collection.products.first.to_construction %> <br/>
+		<%= collection.products.first.to_public %> 
+		<hr>
+
+	<% end %>
+<%  end  %>
