@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :minicart_in_head, :menu, :footer
+  before_action  :menu, :footer
 
   #rescue_from ActiveRecord::RecordNotFound, with: :errors_404
   #rescue_from ActiveRecord::NoMethodError, with: :errors_404
@@ -19,19 +19,11 @@ class ApplicationController < ActionController::Base
      request.referrer
   end
 
-  def minicart_in_head
-    if session[:cart_id]
-      @minicart =  Cart.find(session[:cart_id])
-      @cart_url = "/carts/#{@minicart.id}"
-    end                
-  end
 
 
   def menu
     @main_menu = Menu.where(place: "main_menu").first
-    @top_menu = Menu.where(place: "top_menu").first
-    @product_categories = ProductCategory.all
-    @header_content = SiteVariable.where(place: "header")
+    
   end
 
   def footer

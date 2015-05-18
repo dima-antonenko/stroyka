@@ -2,6 +2,7 @@ class Administrator::ProjectsController < AdministratorController
 
  before_action :set_project, only: [:edit, :update, :destroy, :delete]
 
+
 	def index
 		@projects = Project.paginate(:page => params[:page], :per_page => 10)
 		render 'administrator/projects/index'
@@ -39,12 +40,18 @@ class Administrator::ProjectsController < AdministratorController
   # PATCH/PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
+    @project.assign_attributes(project_params)
+    
+    unless @project.valid?
+    Rails.logger.debug @project.errors.full_messages
+    end
+
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.save
         format.html { redirect_to '/administrator/projects', notice: 'Project was successfully updated.' }
         format.json { render :index, status: :ok, location: @project }
       else
-        format.html { render :edit }
+        format.html { render :update }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -61,9 +68,7 @@ class Administrator::ProjectsController < AdministratorController
   private
 
   def project_params
-      params.require(:project).permit(:project_category_id, :name, :description, :image,
-        :sku, :meta_title, :meta_description, :meta_keywords, :price, :avatar_file_name, :avatar_content_type, :avatar_file_size, :avatar_updated_at,
-        :avatar)
+      params.require(:project).permit(:title, :description, :meta_title, :meta_description, :meta_keywords, :avatar)
   end
 
   def set_project

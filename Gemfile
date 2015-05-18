@@ -27,7 +27,8 @@ gem 'cancan', '~> 1.6.10'
 
 gem 'devise'
 
-gem 'paperclip', '~> 4.2.1'
+gem 'carrierwave' 
+gem 'mini_magick'
 
 gem 'seed_dump'
 

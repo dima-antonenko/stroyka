@@ -75,7 +75,15 @@
 										</div>
 										<div class="tab-pane" id="tab_images">
 											<div class="form-body">
-												
+												<div class="form-group">
+													<label class="col-md-2 control-label">Изображение: </span>
+													</label>
+													<div class="col-md-10">
+														 <%= image_tag(@project.avatar) if @project.avatar? %>
+														 <%= f.file_field :avatar %>
+														  
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="tab-pane" id="tab_seo">

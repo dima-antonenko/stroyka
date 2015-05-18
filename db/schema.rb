@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518015752) do
+ActiveRecord::Schema.define(version: 20150518040101) do
 
   create_table "banners", force: :cascade do |t|
     t.string   "title"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(version: 20150518015752) do
     t.string   "meta_keywords"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "avatar"
   end
 
   add_index "projects", ["bedrooms"], name: "index_projects_on_bedrooms"
