@@ -4,26 +4,16 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   resources :static_pages
 
-  resources :orders, except: [:index]
-
-  resources :line_items
-
-  resources :carts
 
   resources :post_categories, only: [:show] do
     resources :posts, only: [:show]
   end
 
-  resources :product_categories do
-    resources :collections
-  end
+  
+    resources :projects
 
-  resources :collections do
-    resources :products
-  end
 
-  match '/import', to: 'import#index', via: 'get'
-  match '/import/test', to: 'import#test', via: 'get'
+
 
   root 'static#home'
 
@@ -39,8 +29,7 @@ Rails.application.routes.draw do
   #end
 
   namespace :administrator do
-    resources :product_categories
-    resources :products
+    resources :projects
     resources :orders
     resources :post_categories
     resources :posts

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514073649) do
+ActiveRecord::Schema.define(version: 20150518015752) do
 
   create_table "banners", force: :cascade do |t|
     t.string   "title"
@@ -283,6 +283,56 @@ ActiveRecord::Schema.define(version: 20150514073649) do
   add_index "products", ["name"], name: "index_products_on_name"
   add_index "products", ["price"], name: "index_products_on_price"
   add_index "products", ["product_category_id"], name: "index_products_on_product_category_id"
+
+  create_table "project_categories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "project_categories", ["description"], name: "index_project_categories_on_description"
+  add_index "project_categories", ["meta_description"], name: "index_project_categories_on_meta_description"
+  add_index "project_categories", ["meta_keywords"], name: "index_project_categories_on_meta_keywords"
+  add_index "project_categories", ["meta_title"], name: "index_project_categories_on_meta_title"
+  add_index "project_categories", ["title"], name: "index_project_categories_on_title"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "some_area",        precision: 5, scale: 2
+    t.decimal  "total_area",       precision: 5, scale: 2
+    t.decimal  "living_area",      precision: 5, scale: 2
+    t.decimal  "length",           precision: 5, scale: 2
+    t.decimal  "width",            precision: 5, scale: 2
+    t.integer  "storey"
+    t.integer  "rooms"
+    t.integer  "bedrooms"
+    t.integer  "wc"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "projects", ["bedrooms"], name: "index_projects_on_bedrooms"
+  add_index "projects", ["description"], name: "index_projects_on_description"
+  add_index "projects", ["length"], name: "index_projects_on_length"
+  add_index "projects", ["living_area"], name: "index_projects_on_living_area"
+  add_index "projects", ["meta_description"], name: "index_projects_on_meta_description"
+  add_index "projects", ["meta_keywords"], name: "index_projects_on_meta_keywords"
+  add_index "projects", ["meta_title"], name: "index_projects_on_meta_title"
+  add_index "projects", ["rooms"], name: "index_projects_on_rooms"
+  add_index "projects", ["some_area"], name: "index_projects_on_some_area"
+  add_index "projects", ["storey"], name: "index_projects_on_storey"
+  add_index "projects", ["title"], name: "index_projects_on_title"
+  add_index "projects", ["total_area"], name: "index_projects_on_total_area"
+  add_index "projects", ["wc"], name: "index_projects_on_wc"
+  add_index "projects", ["width"], name: "index_projects_on_width"
 
   create_table "site_variables", force: :cascade do |t|
     t.string   "name"
