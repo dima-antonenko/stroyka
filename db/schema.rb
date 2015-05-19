@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518040101) do
+ActiveRecord::Schema.define(version: 20150518225901) do
 
   create_table "banners", force: :cascade do |t|
     t.string   "title"
@@ -283,6 +283,13 @@ ActiveRecord::Schema.define(version: 20150518040101) do
   add_index "products", ["name"], name: "index_products_on_name"
   add_index "products", ["price"], name: "index_products_on_price"
   add_index "products", ["product_category_id"], name: "index_products_on_product_category_id"
+
+  create_table "project_attacments", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "project_categories", force: :cascade do |t|
     t.string   "title"

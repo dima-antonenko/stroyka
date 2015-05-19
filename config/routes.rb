@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+  resources :project_attacments
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :static_pages
 
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
 
   
     resources :projects
+    
 
 
 

@@ -84,6 +84,23 @@
 														  
 													</div>
 												</div>
+
+												<div class="form-group">
+													<label class="col-md-2 control-label">Изображения: </span>
+													</label>
+													  <%= file_field_tag "images[]", type: :file, multiple: true %>
+												</div>
+												<hr/>
+												<div class="form-group">
+													<label class="col-md-2 control-label">Изображения: </span>
+													</label>
+													<br/>
+													<% @project_attachments.each do |project_attachment| %>
+														<%= project_attachment.image %> <br/>
+													<% end %>
+												</div>
+
+
 											</div>
 										</div>
 										<div class="tab-pane" id="tab_seo">
@@ -110,6 +127,9 @@
 												</div>
 												</div>
 										</div>
+										
+
+
 									</div>
 								</div>
 							</div>

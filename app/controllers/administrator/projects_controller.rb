@@ -10,12 +10,14 @@ class Administrator::ProjectsController < AdministratorController
 
 	def edit
 		@project = Project.find(params[:id])
+    @project_attachments = ProjectAttacment.where(project_id: @project.id)
 		render 'administrator/projects/edit'
   	end
 
   	# GET /projects/new
   def new
     @project = Project.new
+    @project_attachment = @project.project_attachments.build
   end
 
  
@@ -27,6 +29,9 @@ class Administrator::ProjectsController < AdministratorController
 
     respond_to do |format|
       if @project.save
+        params[:project_attachments]['image'].each do |a|
+          @project_attachment = @project.project_attachments.create!(:image => a, :project_id => @project.id)
+       end
         format.html { redirect_to '/administrator/projects', notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -48,7 +53,13 @@ class Administrator::ProjectsController < AdministratorController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to '/administrator/projects', notice: 'Project was successfully updated.' }
+        if params[:images]
+          params[:images].each { |image|
+           ProjectAttacment.create(project_id: @project.id, image: image)
+          }
+        end
+       
+        format.html { render :update , notice: 'Project was successfully updated.' }
         format.json { render :index, status: :ok, location: @project }
       else
         format.html { render :update }
@@ -68,11 +79,11 @@ class Administrator::ProjectsController < AdministratorController
   private
 
   def project_params
-      params.require(:project).permit(:title, :description, :meta_title, :meta_description, :meta_keywords, :avatar)
+      params.require(:project).permit(:title, :description, :meta_title, :meta_description, :meta_keywords, :avatar,  project_attachments_attributes: [:id, :project_id, :image])
   end
 
   def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find(params[:id],)
     end
 
 end
