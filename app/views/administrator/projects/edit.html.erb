@@ -2,145 +2,193 @@
 	.tab-content .form-group{
 		padding-bottom: 50px;
 	}
-	
 </style>
-
-
 <div class="page-content-wrapper">
-		<div class="page-content">
-			<div class="row">
-				<div class="col-md-12">
-					<%= form_for([:administrator, @project], :multipart => true ) do |f| %>
-						<div class="portlet light">
-							<div class="portlet-title">
-								<div class="caption">
-									<i class="icon-basket font-green-sharp"></i>
-									<span class="caption-subject font-green-sharp bold uppercase">
-									<%= @project.title %> </span>
-									<span class="caption-helper">редактирование товара</span>
-								</div>
-								<div class="actions btn-set">
-									<a href="/administrator/projects" class="btn btn-default btn-circle"> Назад </a>
-									 <%= f.submit(class: "btn green-haze btn-circle", value: "Обновить") %>
-									<!-- <button class="btn green-haze btn-circle">Сохранить</button>
-									-->
-								</div>
-							</div>
-							<div class="portlet-body">
-								<div class="tabbable">
-									<ul class="nav nav-tabs">
-										<li class="active">
-											<a href="#tab_general" data-toggle="tab">
-											Основное </a>
-										</li>
-										<li>
-											<a href="#tab_description" data-toggle="tab">
-											Описание </a>
-										</li>
-										<li>
-											<a href="#tab_images" data-toggle="tab">
-											Изображения </a>
-										</li>
-										<li>
-											<a href="#tab_seo" data-toggle="tab">
-											SEO
-											</a>
-										</li>
-									</ul>
-									<div class="tab-content no-space">
-										<div class="tab-pane active" id="tab_general">
-											<div class="form-body">
-												<div class="form-group">
-													<label class="col-md-2 control-label">Название: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= f.text_field :title, class: "form-control" %>
-													</div>
-												</div>
-												
-
-
-											</div>
-										</div>
-										<div class="tab-pane" id="tab_description">
-											<div class="form-body">
-												<div class="form-group">
-													<label class="col-md-2 control-label">Описание: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= f.cktext_area :description, class: "form-control edit" %>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane" id="tab_images">
-											<div class="form-body">
-												<div class="form-group">
-													<label class="col-md-2 control-label">Изображение: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= image_tag(@project.avatar) if @project.avatar? %>
-														 <%= f.file_field :avatar %>
-														  
-													</div>
-												</div>
-
-												<div class="form-group">
-													<label class="col-md-2 control-label">Изображения: </span>
-													</label>
-													  <%= file_field_tag "images[]", type: :file, multiple: true %>
-												</div>
-												<hr/>
-												<div class="form-group">
-													<label class="col-md-2 control-label">Изображения: </span>
-													</label>
-													<br/>
-													<% @project_attachments.each do |project_attachment| %>
-														<%= project_attachment.image %> <br/>
-													<% end %>
-												</div>
-
-
-											</div>
-										</div>
-										<div class="tab-pane" id="tab_seo">
-											<div class="form-group">
-													<label class="col-md-2 control-label">Title: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= f.text_area :meta_title, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-md-2 control-label">Description: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= f.text_area :meta_description, class: "form-control" %>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-md-2 control-label">Keywords: </span>
-													</label>
-													<div class="col-md-10">
-														 <%= f.text_area :meta_keywords, class: "form-control" %>
-													</div>
-												</div>
-												</div>
-										</div>
-										
-
-
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-12">
+				<%= form_for([:administrator, @project], :multipart => true ) do |f| %>
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="icon-basket font-green-sharp"></i>
+							<span class="caption-subject font-green-sharp bold uppercase">
+							<%= @project.title %> </span>
+							<span class="caption-helper">редактирование товара</span>
+						</div>
+						<div class="actions btn-set">
+							<a href="/administrator/projects" class="btn btn-default btn-circle"> Назад </a>
+							<%= f.submit(class: "btn green-haze btn-circle", value: "Обновить") %>
+							<!-- <button class="btn green-haze btn-circle">Сохранить</button>
+							-->
+						</div>
+					</div>
+					<div class="portlet-body">
+						<div class="tabbable">
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="#tab_general" data-toggle="tab">
+									Основное </a>
+								</li>
+								<li>
+									<a href="#tab_description" data-toggle="tab">
+									Описание </a>
+								</li>
+								<li>
+									<a href="#tab_images" data-toggle="tab">
+									Изображения </a>
+								</li>
+								<li>
+									<a href="#tab_fasad" data-toggle="tab">
+									Фасады </a>
+								</li>
+								<li>
+									<a href="#tab_plan" data-toggle="tab">
+									Планы </a>
+								</li>
+								<li>
+									<a href="#tab_area" data-toggle="tab">
+									Участок </a>
+								</li>
+								<li>
+									<a href="#tab_seo" data-toggle="tab">
+										SEO
+									</a>
+								</li>
+							</ul>
+							<div class="tab-content no-space">
+								<div class="tab-pane active" id="tab_general">
+									<div class="form-body">
+										<div class="form-group">
+										<label class="col-md-2 control-label">Название: </span>
+									</label>
+									<div class="col-md-10">
+										<%= f.text_field :title, class: "form-control" %>
 									</div>
 								</div>
+								
 							</div>
 						</div>
-					<% end %>
+						<div class="tab-pane" id="tab_description">
+							<div class="form-body">
+								<div class="form-group">
+								<label class="col-md-2 control-label">Описание: </span>
+							</label>
+							<div class="col-md-10">
+								<%= f.cktext_area :description, class: "form-control edit" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab_images">
+					<div class="form-body">
+						<div class="form-group">
+							<table class="table table-bordered table-hover">
+							<thead>
+								<tr role="row" class="heading">
+									<th width="8%">
+										Аватар
+									</th>
+									<th width="92%">
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<a href="../../assets/admin/pages/media/works/img1.jpg" class="fancybox-button" data-rel="fancybox-button">
+											<img class="img-responsive" src="<%= @project.avatar %>" alt="">
+										</a>
+									</td>
+									<td>
+										<a href="javascript:;" class="btn default btn-sm">
+										<i class="fa fa-times"></i> Удалить </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 
+						</div>
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr role="row" class="heading">
+									<th width="8%">
+										Изображение
+									</th>
+									<th width="8%">
+										Тип
+									</th>
+									<th width="84%">
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @project_attachments.each do |project_attachment| %>
+								<tr>
+									<td>
+										<a href="#" class="fancybox-button" data-rel="fancybox-button">
+											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+										</a>
+									</td>
+									<td>
+										<%= project_attachment.place %>
+									</td>
+									<td>
+										<a href="javascript:;" class="btn default btn-sm">
+										<i class="fa fa-times"></i> Удалить </a>
+									</td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>		
+				</div>
+
+				<div class="tab-pane" id="tab_fasad">
+					<div class="form-body">
+					</div>
+				</div>
+
+				<div class="tab-pane" id="tab_plan">
+					<div class="form-body">
+					</div>
+				</div>
+				<div class="tab-pane" id="tab_area">
+					<div class="form-body">
+					</div>
+				</div>
+				<div class="tab-pane" id="tab_seo">
+					<div class="form-group">
+					<label class="col-md-2 control-label">Title: </span>
+				</label>
+				<div class="col-md-10">
+					<%= f.text_area :meta_title, class: "form-control" %>
 				</div>
 			</div>
-			<!-- END PAGE CONTENT-->
+			<div class="form-group">
+			<label class="col-md-2 control-label">Description: </span>
+		</label>
+		<div class="col-md-10">
+			<%= f.text_area :meta_description, class: "form-control" %>
 		</div>
 	</div>
-
+	<div class="form-group">
+	<label class="col-md-2 control-label">Keywords: </span>
+</label>
+<div class="col-md-10">
+	<%= f.text_area :meta_keywords, class: "form-control" %>
 </div>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+<!-- END PAGE CONTENT-->
+</div>
+</div>
+</div>

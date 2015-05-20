@@ -2,11 +2,14 @@ class ProjectsController < ApplicationController
   before_action :project, only: [:show, :edit, :update, :destroy]
   # GET /products/1
   # GET /products/1.json
+
+  layout false
   def show
   end
 
   def index
     @projects = Project.all
+    render 'projects/test'
   end
   
 

@@ -3,11 +3,14 @@
 		<div class="page-content">
 			<div class="row">
 				<div class="col-md-12">
-					<%= @project.changes %><hr /><br/>
 					<% params.each do |param| %>
 						<%= param %><hr />
 					<% end %>	
-
+					<hr/>
+					zzzz
+					<% params[:images].each do |param| %>
+						<%= param %><hr />
+					<% end %>
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->

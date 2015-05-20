@@ -55,7 +55,7 @@ class Administrator::ProjectsController < AdministratorController
       if @project.save
         if params[:images]
           params[:images].each { |image|
-           ProjectAttacment.create(project_id: @project.id, image: image)
+           ProjectAttacment.create(project_id: @project.id, image: image, place: params['place'])
           }
         end
        
