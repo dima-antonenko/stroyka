@@ -11,8 +11,11 @@ class Administrator::ProjectsController < AdministratorController
 	def edit
 		@project = Project.find(params[:id])
     @project_attachments = ProjectAttacment.where(project_id: @project.id)
-		render 'administrator/projects/edit'
-  	end
+    @project_attachments_dop_photos = @project_attachments.where(place: "dop_photo")
+		@project_attachments_plans = @project_attachments.where(place: "plan")
+    @project_attachments_fasads = @project_attachments.where(place: "fasad")
+    @project_attachments_areas = @project_attachments.where(place: "area")
+  end
 
   	# GET /projects/new
   def new
@@ -53,13 +56,13 @@ class Administrator::ProjectsController < AdministratorController
 
     respond_to do |format|
       if @project.save
-        if params[:images]
+        if params[:images].class != nil
           params[:images].each { |image|
            ProjectAttacment.create(project_id: @project.id, image: image, place: params['place'])
           }
         end
        
-        format.html { render :update , notice: 'Project was successfully updated.' }
+        format.html { render :edit , notice: 'Project was successfully updated.' }
         format.json { render :index, status: :ok, location: @project }
       else
         format.html { render :update }
