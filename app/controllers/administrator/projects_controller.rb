@@ -56,13 +56,13 @@ class Administrator::ProjectsController < AdministratorController
 
     respond_to do |format|
       if @project.save
-        if params[:images].class != nil
-          params[:images].each { |image|
+        if params[:images] != nil
+          params[:images].each do |image|
            ProjectAttacment.create(project_id: @project.id, image: image, place: params['place'])
-          }
         end
+       end 
        
-        format.html { render :edit , notice: 'Project was successfully updated.' }
+        format.html { redirect_to '/administrator/projects' , notice: 'Project was successfully updated.' }
         format.json { render :index, status: :ok, location: @project }
       else
         format.html { render :update }

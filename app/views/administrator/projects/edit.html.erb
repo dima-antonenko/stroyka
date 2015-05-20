@@ -32,7 +32,7 @@
 							<i class="icon-basket font-green-sharp"></i>
 							<span class="caption-subject font-green-sharp bold uppercase">
 							<%= @project.title %> </span>
-							<span class="caption-helper">редактирование проекта <%= flash[:notice] %></span>
+							<span class="caption-helper">редактирование проекта %></span>
 						</div>
 						<div class="actions btn-set">
 							<a href="/administrator/projects" class="btn btn-default btn-circle"> Назад </a>
@@ -86,244 +86,297 @@
 										<%= f.text_field :title, class: "form-control" %>
 									</div>
 								</div>
-								
-							</div>
-						</div>
-						<div class="tab-pane" id="tab_description">
-							<div class="form-body">
 								<div class="form-group">
-								<label class="col-md-2 control-label">Описание: </span>
+								<label class="col-md-2 control-label">Ориентировочна общая площадь: </span>
 							</label>
 							<div class="col-md-10">
-								<%= f.cktext_area :description, class: "form-control edit" %>
+								<%= f.text_field :title, class: "form-control" %>
 							</div>
 						</div>
+						<div class="form-group">
+						<label class="col-md-2 control-label">Общая площадь помещений: </span>
+					</label>
+					<div class="col-md-10">
+						<%= f.text_field :title, class: "form-control" %>
 					</div>
 				</div>
-				<div class="tab-pane" id="tab_images">
-					<div class="form-body">
-						<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
-							<ul>
-								<li><%= f.file_field :avatar, class: "btn yellow", id: "tab_images_uploader_pickfiles" %></li>
-							</ul>
-							
-						</div>
-						<div class="row">
-							<div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12">
-							</div>
-						</div>
-						<div class="form-group no_padding_bottom">
-							<table class="table table-bordered table-hover">
-								<thead>
-									<tr role="row" class="heading">
-										<th width="11%">
-											Аватар
-										</th>
-										<th width="88%">
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<a href="#" class="fancybox-button" data-rel="fancybox-button">
-												<img class="img-responsive" src="<%= @project.avatar.mini_admin %>" alt="">
-											</a>
-										</td>
-										<td>
-											<a href="javascript:;" class="btn default btn-sm">
-											</i> Удалить </a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-							
-						<div class="form-group">	
-						<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
-							<ul>
-								<li><%= select_tag("place", options_for_select([['доп. фото', 'dop_photo'],['план', 'plan'], ['фасад', 'fasad'] , ['участок', 'area']]), class: "btn green", id: "tab_images_uploader_pickfiles") %></li>
-								<li><%= file_field_tag  "images[]", type: :file, multiple: true, class: "btn yellow", id: "tab_images_uploader_pickfiles" %></li>
-							</ul>
-							
-						</div>
-						<span class="caption-subject font-green-sharp bold uppercase all_images_string">
-							Все изображения проекта </span>
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr role="row" class="heading">
-									<th width="6%">
-										Изображение
-									</th>
-									<th width="8%">
-										Тип
-									</th>
-									<th width="84%">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @project_attachments.each do |project_attachment| %>
-								<tr>
-									<td>
-										
-											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
-
-									</td>
-									<td>
-										<%= project_attachment.place %>
-									</td>
-									<td>
-										<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
-									</td>
-								</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				</div>
-				<div class="tab-pane" id="tab_dop_photo">
-					<div class="form-body">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr role="row" class="heading">
-									<th width="6%">
-										Изображение
-									</th>
-									</th>
-									<th width="84%">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @project_attachments_dop_photos.each do |project_attachment| %>
-								<tr>
-									<td>
-										
-											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
-
-									</td>
-									<td>
-										<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
-									</td>
-								</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="tab_fasad">
-					<div class="form-body">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr role="row" class="heading">
-									<th width="6%">
-										Изображение
-									</th>
-									</th>
-									<th width="84%">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @project_attachments_fasads.each do |project_attachment| %>
-								<tr>
-									<td>
-										
-											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
-
-									</td>
-									<td>
-										<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
-									</td>
-								</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane" id="tab_plan">
-					<div class="form-body">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr role="row" class="heading">
-									<th width="6%">
-										Изображение
-									</th>
-									</th>
-									<th width="84%">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @project_attachments_plans.each do |project_attachment| %>
-								<tr>
-									<td>
-										
-											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
-
-									</td>
-									<td>
-										<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
-									</td>
-								</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane" id="tab_area">
-					<div class="form-body">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr role="row" class="heading">
-									<th width="6%">
-										Изображение
-									</th>
-									</th>
-									<th width="84%">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @project_attachments_areas.each do |project_attachment| %>
-								<tr>
-									<td>
-										
-											<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
-
-									</td>
-									<td>
-										<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
-									</td>
-								</tr>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="tab-pane" id="tab_seo">
-					<div class="form-group">
-					<label class="col-md-2 control-label">Title: </span>
-				</label>
-				<div class="col-md-10">
-					<%= f.text_area :meta_title, class: "form-control" %>
-				</div>
+				
+				<div class="form-group">
+				<label class="col-md-2 control-label">Жилая площадь: </span>
+			</label>
+			<div class="col-md-10">
+				<%= f.text_field :title, class: "form-control" %>
 			</div>
-			<div class="form-group">
-			<label class="col-md-2 control-label">Description: </span>
-		</label>
-		<div class="col-md-10">
-			<%= f.text_area :meta_description, class: "form-control" %>
 		</div>
 	</div>
-	<div class="form-group">
-	<label class="col-md-2 control-label">Keywords: </span>
+	<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="portlet yellow-crusta box">
+													<div class="portlet-title">
+														<div class="caption">
+															<i class="fa fa-cogs"></i>Площадь
+														</div>
+													</div>
+													<div class="portlet-body">
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																 Название
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :title, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																 Название
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :title, class: "form-control" %>
+															</div>
+														</div>
+														<div class="row static-info">
+															<div class="col-md-5 name">
+																 Название
+															</div>
+															<div class="col-md-7 value">
+																<%= f.text_field :title, class: "form-control" %>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+</div>
+
+
+<div class="tab-pane" id="tab_description">
+<div class="form-body">
+<div class="form-group">
 </label>
 <div class="col-md-10">
-	<%= f.text_area :meta_keywords, class: "form-control" %>
+	<%= f.cktext_area :description, class: "form-control edit" %>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane" id="tab_images">
+<div class="form-body">
+<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+<ul>
+	<li><%= f.file_field :avatar, class: "btn yellow", id: "tab_images_uploader_pickfiles" %></li>
+</ul>
+
+</div>
+<div class="row">
+<div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12">
+</div>
+</div>
+<div class="form-group no_padding_bottom">
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr role="row" class="heading">
+			<th width="11%">
+				Аватар
+			</th>
+			<th width="88%">
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<a href="#" class="fancybox-button" data-rel="fancybox-button">
+					<img class="img-responsive" src="<%= @project.avatar.mini_admin %>" alt="">
+				</a>
+			</td>
+			<td>
+				<a href="javascript:;" class="btn default btn-sm">
+				</i> Удалить </a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="form-group">
+<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10 buttons_actions">
+	<ul>
+		<li><%= select_tag("place", options_for_select([['доп. фото', 'dop_photo'],['план', 'plan'], ['фасад', 'fasad'] , ['участок', 'area']]), class: "btn green", id: "tab_images_uploader_pickfiles") %></li>
+		<li><%= file_field_tag  "images[]", type: :file, multiple: true, class: "btn yellow", id: "tab_images_uploader_pickfiles" %></li>
+	</ul>
+	
+</div>
+<span class="caption-subject font-green-sharp bold uppercase all_images_string">
+Все изображения проекта </span>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr role="row" class="heading">
+			<th width="6%">
+				Изображение
+			</th>
+			<th width="8%">
+				Тип
+			</th>
+			<th width="84%">
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @project_attachments.each do |project_attachment| %>
+		<tr>
+			<td>
+				
+				<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+			</td>
+			<td>
+				<%= project_attachment.place %>
+			</td>
+			<td>
+				<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="tab-pane" id="tab_dop_photo">
+<div class="form-body">
+<table class="table table-bordered table-hover">
+<thead>
+	<tr role="row" class="heading">
+		<th width="6%">
+			Изображение
+		</th>
+	</th>
+	<th width="84%">
+	</th>
+</tr>
+</thead>
+<tbody>
+<% @project_attachments_dop_photos.each do |project_attachment| %>
+<tr>
+	<td>
+		
+		<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+	</td>
+	<td>
+		<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+	</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="tab_fasad">
+<div class="form-body">
+<table class="table table-bordered table-hover">
+<thead>
+<tr role="row" class="heading">
+	<th width="6%">
+		Изображение
+	</th>
+</th>
+<th width="84%">
+</th>
+</tr>
+</thead>
+<tbody>
+<% @project_attachments_fasads.each do |project_attachment| %>
+<tr>
+<td>
+	
+	<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+</td>
+<td>
+	<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="tab_plan">
+<div class="form-body">
+<table class="table table-bordered table-hover">
+<thead>
+<tr role="row" class="heading">
+<th width="6%">
+	Изображение
+</th>
+</th>
+<th width="84%">
+</th>
+</tr>
+</thead>
+<tbody>
+<% @project_attachments_plans.each do |project_attachment| %>
+<tr>
+<td>
+
+<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+</td>
+<td>
+<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="tab_area">
+<div class="form-body">
+<table class="table table-bordered table-hover">
+<thead>
+<tr role="row" class="heading">
+<th width="6%">
+Изображение
+</th>
+</th>
+<th width="84%">
+</th>
+</tr>
+</thead>
+<tbody>
+<% @project_attachments_areas.each do |project_attachment| %>
+<tr>
+<td>
+
+<img class="img-responsive" src="<%= project_attachment.image.mini_admin %>" alt="">
+</td>
+<td>
+<%= link_to 'Удалить', project_attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn default btn-sm" %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="tab_seo">
+<div class="form-group">
+<label class="col-md-2 control-label">Title: </span>
+</label>
+<div class="col-md-10">
+<%= f.text_area :meta_title, class: "form-control" %>
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-2 control-label">Description: </span>
+</label>
+<div class="col-md-10">
+<%= f.text_area :meta_description, class: "form-control" %>
+</div>
+</div>
+<div class="form-group">
+<label class="col-md-2 control-label">Keywords: </span>
+</label>
+<div class="col-md-10">
+<%= f.text_area :meta_keywords, class: "form-control" %>
 </div>
 </div>
 </div>
